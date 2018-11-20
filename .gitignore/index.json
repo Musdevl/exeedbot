@@ -9,7 +9,7 @@ bot.on('ready', () => {
     console.log('Bot Ready !');
 });
 
-bot.login('NTExMTM5ODA0MDc2MDQ4Mzg1.DsmlYA.nZILgtcBtzKoLZt98ccpyN6AU_8');
+bot.login('');
 
 bot.on('message' , message => {
     if (message.content === "pong"){
