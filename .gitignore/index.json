@@ -1,0 +1,54 @@
+const Discord = require ('discord.js');
+
+var bot = new Discord.Client();
+var prefix = (".");
+var randnum = 0
+
+bot.on('ready', () => {
+    bot.user.setPresence ({ game: { name: '[.Help] Bot Fais par Mus', type: 0}})
+    console.log('Bot Ready !');
+});
+
+bot.login('NTExMTM5ODA0MDc2MDQ4Mzg1.DsmlYA.nZILgtcBtzKoLZt98ccpyN6AU_8');
+
+bot.on('message' , message => {
+    if (message.content === "pong"){
+        message.reply('ping' );
+        console.log('pong ping')
+        
+    };
+
+     if (message.content === prefix + "help"){
+         var help_embed = new Discord.RichEmbed ()
+            .setColor ('#E99C01')
+            .addField ("Commandes du bot :", "----------")
+            .addField (".Crédits", "Pour les crédits du bot : .credit")
+            message.channel.sendEmbed(help_embed);
+        console.log ('Commande Help Effectué ! ');
+    };
+
+    if (message.content === prefix + "modhelp"){
+         var help_embed = new Discord.RichEmbed ()
+            .setColor ('#35E52F')
+            .addField ("Commandes de modération du bot :", "----------")
+            .addField (".Clear", "Cette commande efface TOUT les message du chat")
+            message.channel.sendEmbed(help_embed);
+        console.log ('Commande ModHelp Effectué');
+    };
+
+    if (message.content === prefix + "credit"){
+        message.channel.send ("Le bot a été fais par Mus \nPour tout problème le contacter.");
+        console.log ('Commande info effectué');
+
+    }; 
+    if(message.content === prefix + "clear"){
+        if (message.member.hasPermission("MANAGE_MESSAGES")){
+            message.channel.fetchMessages()
+                .then(function(list){
+                        message.channel.bulkDelete(list);
+                }, function(err){message.chennel.send("Erreur")})}
+    };
+
+
+
+})
